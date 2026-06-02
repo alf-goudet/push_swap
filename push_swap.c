@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 20:12:31 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/05/27 13:49:50 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:03:21 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,7 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		exit(EXIT_FAILURE);
 	initialise_stacks(&a, &b, argc, argv);
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-	ss(&a, &b);
-	rr(&a, &b);
-	pa(&a, &b);
-	rrr(&a, &b);
-	pa(&a, &b);
-	pa(&a, &b);
-	pa(&a, &b);
+	sort_numbers(&a, &b);
 	free_stacks(&a, &b);
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:10:57 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/05/26 12:54:42 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:02:42 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_stack
 }		t_stack;
 
 int		has_duplicates(int *stack, int n);
+void	sort_numbers(t_stack *a, t_stack *b);
+
 
 // Operation functions
 void	sa(t_stack *a);

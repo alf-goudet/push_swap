@@ -3,15 +3,19 @@ NAME = push_swap
 LIB = libpushswap.a
 LIBFTPRINTF = ft_printf/libftprintf.a
 LIBFT = ft_printf/libft/libft.a
+
+#All previous libraries grouped into one
 LIBS = $(LIB) $(LIBFTPRINTF) $(LIBFT)
 
-SRCS = push_swap.c
+SRCS = push_swap.c find_dups.c swap.c push.c rotate.c reverse_rotate.c \
+	   number_sort.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
+# make option to compile ft_printf folder
 FT_PRINTF_PATH = -C ft_printf
 
 all: sub_ft_printf $(NAME)
@@ -25,10 +29,10 @@ $(NAME): $(OBJS)
 
 clean:
 	$(MAKE) $@ $(FT_PRINTF_PATH)
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(LIB)
 
 fclean: clean
 	$(MAKE) $@ $(FT_PRINTF_PATH)
-	rm -f $(LIB) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
