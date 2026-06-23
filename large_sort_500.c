@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   large_sort.c                                       :+:      :+:    :+:   */
+/*   large_sort_500.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/19 18:37:38 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 11:05:14 by agoudet-         ###   ########.fr       */
+/*   Created: 2026/06/23 10:57:18 by agoudet-          #+#    #+#             */
+/*   Updated: 2026/06/23 11:04:35 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	idx_replace(int *tmp_srt, t_stack *a, int n);
 
 static int	*ft_memdup_int(const int *orig, size_t n);
 
-void	sort_100_numbers(t_stack *a, t_stack *b, int const top)
+void	sort_500_numbers(t_stack *a, t_stack *b, int const top)
 {
 	int		*temp_sorted_arr;
 	size_t	nbr_count;
@@ -25,7 +25,7 @@ void	sort_100_numbers(t_stack *a, t_stack *b, int const top)
 	temp_sorted_arr = ft_memdup_int(a->numbers, (size_t)nbr_count);
 	quick_sort(temp_sorted_arr, top, a->bottom);
 	idx_replace(temp_sorted_arr, a, nbr_count);
-	sort_in_chunks(a, b, 5, 20);
+	sort_in_chunks(a, b, 11, 45);
 	free(temp_sorted_arr);
 }
 

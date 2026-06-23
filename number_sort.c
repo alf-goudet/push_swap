@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 17:02:58 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/19 20:09:44 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 11:02:47 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	sort_numbers(t_stack *a, t_stack *b)
 		sort_3_numbers(a, top);
 	else if (nbr_count == 5)
 		sort_5_numbers(a, b, top);
-	else if (nbr_count >= 100)
+	else if (nbr_count == 100)
 		sort_100_numbers(a, b, top);
-	else if (nbr_count >= 500)
+	else if (nbr_count == 500)
 		sort_500_numbers(a, b, top);
 }

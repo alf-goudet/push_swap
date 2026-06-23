@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 14:17:00 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 10:22:46 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 11:19:56 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,18 @@ void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size)
 	int	current_chunk;
 	int	min_index;
 	int	max_index;
-	int	hold_first;
-	int	hold_second;
 
 	current_chunk = 0;
-	while (current chunk < chk_n)
+	while (current_chunk < chk_n)
 	{
-		min_index = current_chunk = chunk_size;
-		max_index = (current_chunk + 1) * chunk_size + 1;
-		if (is_in_range(a, min_index, max_index))
+		min_index = current_chunk * chunk_size;
+		max_index = (current_chunk + 1) * chunk_size - 1;
+		while (is_in_range(a, min_index, max_index))
+		{
+			// 1. Find hold_first and hold_second positions here
+			// 2. Calculate costs and rotate the cheaper one to the top
+			// 3. Position Stack B correctly and push (pb)	
+		}
+		current_chunk++;
 	}
 }
