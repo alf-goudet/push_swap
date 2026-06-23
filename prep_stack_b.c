@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 16:35:01 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 17:49:04 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:15:30 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ static int	find_largest_smaller(t_stack *b, int incoming_nbr)
 	int	largest_smaller_i;
 	int	i;
 
-	largest_smaller = b->numbers[0];
-	largest_smaller_i = 0;
-	i = 1;
+	largest_smaller = -1;
+	largest_smaller_i = -1;
+	i = 0;
 	while (i <= b->bottom)
 	{
 		if (b->numbers[i] > largest_smaller && b->numbers[i] < incoming_nbr)
 		{
-			largest_smaller = b->numbers[i]
+			largest_smaller = b->numbers[i];
 			largest_smaller_i = i;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 18:37:38 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 11:05:14 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:19:11 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,38 @@ static void	idx_replace(int *tmp_srt, t_stack *a, int n);
 
 static int	*ft_memdup_int(const int *orig, size_t n);
 
-void	sort_100_numbers(t_stack *a, t_stack *b, int const top)
+void	sort_large_nbrs(t_stack *a, t_stack *b, int chk_n, int const chk_size)
 {
 	int		*temp_sorted_arr;
 	size_t	nbr_count;
 
 	nbr_count = a->bottom + 1;
-	temp_sorted_arr = ft_memdup_int(a->numbers, (size_t)nbr_count);
+	temp_sorted_arr = ft_memdup_int(a->numbers, nbr_count);
 	quick_sort(temp_sorted_arr, top, a->bottom);
 	idx_replace(temp_sorted_arr, a, nbr_count);
-	sort_in_chunks(a, b, 5, 20);
 	free(temp_sorted_arr);
+	sort_in_chunks(a, b, chk_n, chk_size);
 }
 
-static void	idx_replace(int *tmp_srt, t_stack *a, int n)
+static void	idx_replace(int *tmp_srt, t_stack *a, size_t n)
 {
-	unsigned int	copy_i;
-	unsigned int	orig_i;
+	size_t	i;
+	size_t	j;
 
-	copy_i = 0;
-	while (copy_i < nbr_count)
+	i = 0;
+	while (i < n)
 	{
-		orig_i = 0;
-		while (1)
+		j = 0;
+		while (j < n)
 		{
-			if (tmp_srt[copy_i] == a->numbers[orig_i])
+			if (tmp_srt[j] == a->numbers[i])
 			{
-				a->numbers[orig_i] = copy_i;
+				a->numbers[i] = (int)j;
 				break ;
 			}
-			orig_i++;
+			j++;
 		}
-		copy_i++;
+		i++;
 	}
 }
 
@@ -56,7 +56,8 @@ static int	*ft_memdup_int(const int *orig, size_t n)
 	int	*dest;
 
 	dest = (int *)malloc(n * sizeof(int));
-	// Handle malloc failure here
+	if (dest == NULL)
+		// handle malloc error here
 	ft_memcpy(dest, orig, n * sizeof(int));
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:10:57 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 16:36:42 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:20:14 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ void	rrr(t_stack *a, t_stack *b);
 // Sorting algorithm functions
 void	sort_3_numbers(t_stack *a, int const top);
 void	sort_5_numbers(t_stack *a, t_stack *b, int const top);
-void	sort_100_numbers(t_stack *a, t_stack *b, int const top);
-void	sort_500_numbers(t_stack *a, t_stack *b, int const top);
+void	sort_large_nbrs(t_stack *a, t_stack *b, int chk_n, int chk_size);
 
 // Other helper functions
 void	quick_sort(int *array, int start, int end);
-void	sort_chunks(int **chunks, int *idx_array, t_stack *a, t_stack *b);
+void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size);
 void	prepare_stack_b(t_stack *b, int incoming_nbr);
 
 #endif
