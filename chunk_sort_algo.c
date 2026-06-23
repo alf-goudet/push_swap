@@ -6,29 +6,11 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 14:17:00 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:59:54 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 21:00:26 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdbool.h>
-
-static bool is_in_range(t_stack *a, int index_limit[2])
-{
-	int 		curr_index;
-	int const	min = 0;
-	int const	max = 1;
-
-	curr_index = 0;
-	while (curr_index <= a->bottom)
-	{
-		if (a->numbers[curr_index] >= index_limit[min]
-			&& a->numbers[curr_index] <= index_limit[max])
-			return (true);
-		curr_index++;
-	}
-	return (false);
-}
 
 static int	find_hold(t_stack *a, int index_limit[2], char to_find)
 {
@@ -115,30 +97,39 @@ static void	smart_rotate_b_to_top(t_stack *b)
 	}
 }
 
+static void	push_back_to_a(t_stack *a, t_stack *b)
+{
+	while (b->bottom >= 0)
+	{
+		smart_rotate_b_to_top(b);
+		pa(a, b);
+	}
+}
+
 void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size)
 {
 	int	current_chunk;
 	int	index_limit[2];
 	int	hold[2];
+	int	total_elements;
 
+	total_elements = a->bottom + 1;
 	current_chunk = 0;
 	while (current_chunk < chk_n)
 	{
 		index_limit[0] = current_chunk * chunk_size;
 		index_limit[1] = (current_chunk + 1) * chunk_size - 1;
+		if (current_chunk == chk_n - 1)
+			index_limit[1] = total_elements - 1;
 		while (is_in_range(a, index_limit))
 		{
 			hold[0] = find_hold(a, index_limit, 'f');
 			hold[1] = find_hold(a, index_limit, 's');
 			smart_rotate_a_to_top(a, hold);
 			prepare_stack_b(b, a->numbers[0]);
-			pb(a, b);	
+			pb(a, b);
 		}
 		current_chunk++;
 	}
-	while (b->bottom >= 0)
-	{
-		smart_rotate_b_to_top(b);
-		pa(a, b);
-	}
+	push_back_to_a(a, b);
 }

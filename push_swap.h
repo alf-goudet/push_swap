@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:10:57 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:51:56 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 20:52:02 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_printf/ft_printf.h"	// to use my ft_printf
 # include "ft_printf/libft/libft.h"	// to use my libft functions
 # include <stdlib.h>				// for malloc, free, exit
+# include <stdbool.h> // for more explicit "true/false" condition values
 
 // Standard structure for stacks
 typedef struct s_stack
@@ -53,5 +54,6 @@ void	quick_sort(int *array, int start, int end);
 void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size);
 void	prepare_stack_b(t_stack *b, int incoming_nbr);
 int		find_max(t_stack *b);
+bool	is_in_range(t_stack *a, int index_limit[2]);
 
 #endif
