@@ -6,13 +6,13 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 18:37:38 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:19:11 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:57:31 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	idx_replace(int *tmp_srt, t_stack *a, int n);
+static void	idx_replace(int *tmp_srt, t_stack *a, size_t n);
 
 static int	*ft_memdup_int(const int *orig, size_t n);
 
@@ -23,7 +23,9 @@ void	sort_large_nbrs(t_stack *a, t_stack *b, int chk_n, int const chk_size)
 
 	nbr_count = a->bottom + 1;
 	temp_sorted_arr = ft_memdup_int(a->numbers, nbr_count);
-	quick_sort(temp_sorted_arr, top, a->bottom);
+	if (temp_sorted_arr == NULL)
+		handle_error(a, b);
+	quick_sort(temp_sorted_arr, 0, a->bottom);
 	idx_replace(temp_sorted_arr, a, nbr_count);
 	free(temp_sorted_arr);
 	sort_in_chunks(a, b, chk_n, chk_size);
@@ -57,7 +59,7 @@ static int	*ft_memdup_int(const int *orig, size_t n)
 
 	dest = (int *)malloc(n * sizeof(int));
 	if (dest == NULL)
-		// handle malloc error here
+		return (NULL);
 	ft_memcpy(dest, orig, n * sizeof(int));
 	return (dest);
 }

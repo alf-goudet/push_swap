@@ -6,24 +6,29 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:10:57 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:28:07 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:51:56 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "ft_printf/ft_printf.h"
-# include "ft_printf/libft/libft.h"
+# include "ft_printf/ft_printf.h"	// to use my ft_printf
+# include "ft_printf/libft/libft.h"	// to use my libft functions
+# include <stdlib.h>				// for malloc, free, exit
 
+// Standard structure for stacks
 typedef struct s_stack
 {
 	int	bottom;
 	int	*numbers;
 }		t_stack;
 
+// Main helper functions
 int		has_duplicates(int *stack, int n);
 void	sort_numbers(t_stack *a, t_stack *b);
+void	handle_error(t_stack *a, t_stack *b);
+void	free_stacks(t_stack *a, t_stack *b);
 
 // Operation functions
 void	sa(t_stack *a);

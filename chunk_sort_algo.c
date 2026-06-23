@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 14:17:00 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:41:41 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:59:54 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	smart_rotate_b_to_top(t_stack *b)
 
 	max_index = find_max(b);
 	top_down_cost = max_index;
-	bottom_up_cost = (a->bottom + 1) - max_index;
+	bottom_up_cost = (b->bottom + 1) - max_index;
 	i = 0;
 	if (top_down_cost <= bottom_up_cost)
 	{
@@ -109,7 +109,7 @@ static void	smart_rotate_b_to_top(t_stack *b)
 	{
 		while (i < bottom_up_cost)
 		{
-			rra(a);
+			rrb(b);
 			i++;
 		}
 	}
@@ -130,7 +130,7 @@ void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size)
 		{
 			hold[0] = find_hold(a, index_limit, 'f');
 			hold[1] = find_hold(a, index_limit, 's');
-			smart_rotate_to_top(a, hold);
+			smart_rotate_a_to_top(a, hold);
 			prepare_stack_b(b, a->numbers[0]);
 			pb(a, b);	
 		}

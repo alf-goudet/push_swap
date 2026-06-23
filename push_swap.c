@@ -6,19 +6,13 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 20:12:31 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/09 21:44:14 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:51:56 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	initialise_stacks(t_stack *a, t_stack *b, int argc, char **argv);
-
-static void	check_for_duplicates(t_stack *a, t_stack *b, int argc);
-
-static void	free_stacks(t_stack *a, t_stack *b);
-
-static void	handle_error(t_stack *a, t_stack *b);
 
 int	main(int argc, char *argv[])
 {
@@ -58,35 +52,18 @@ static void	initialise_stacks(t_stack *a, t_stack *b, int argc, char **argv)
 		a->bottom++;
 		idx--;
 	}
-	check_for_duplicates(a, b, argc);
+	if (has_duplicates(a->numbers, argc - 1))
+		handle_error(a, b);
 }
 
-static void	check_for_duplicates(t_stack *a, t_stack *b, int argc)
-{
-	int	*temp_stack_cpy;
-
-	temp_stack_cpy = (int *)ft_calloc(argc - 1, sizeof(int));
-	if (temp_stack_cpy == NULL)
-	{
-		handle_error(a, b);
-	}
-	ft_memcpy(temp_stack_cpy, a->numbers, (argc - 1) * sizeof(int));
-	if (has_duplicates(temp_stack_cpy, argc - 1))
-	{
-		free(temp_stack_cpy);
-		handle_error(a, b);
-	}
-	free(temp_stack_cpy);
-}
-
-static void	handle_error(t_stack *a, t_stack *b)
+void	handle_error(t_stack *a, t_stack *b)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
 	free_stacks(a, b);
 	exit(EXIT_FAILURE);
 }
 
-static void	free_stacks(t_stack *a, t_stack *b)
+void	free_stacks(t_stack *a, t_stack *b)
 {
 	if (a->numbers != NULL && b->numbers != NULL)
 	{
