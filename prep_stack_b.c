@@ -6,13 +6,11 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 16:35:01 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:15:30 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:41:41 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	find_max(t_stack *b);
 
 static int	find_min(t_stack *b);
 
@@ -83,7 +81,7 @@ static int	find_largest_smaller(t_stack *b, int incoming_nbr)
 	return (largest_smaller_i);
 }
 
-static int	find_max(t_stack *b)
+int	find_max(t_stack *b)
 {
 	int	max_i;
 	int	max;

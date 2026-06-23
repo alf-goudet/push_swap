@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 14:17:00 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 17:53:49 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:41:41 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	find_hold(t_stack *a, int index_limit[2], char to_find)
 	return (-1);
 }
 
-static void	smart_rotate_to_top(t_stack *a, int hold[2])
+static void	smart_rotate_a_to_top(t_stack *a, int hold[2])
 {
 	int	top_down_cost;
 	int	bottom_up_cost;
@@ -73,6 +73,35 @@ static void	smart_rotate_to_top(t_stack *a, int hold[2])
 		while (i < top_down_cost)
 		{
 			ra(a);
+			i++;
+		}
+	}	
+	else
+	{
+		while (i < bottom_up_cost)
+		{
+			rra(a);
+			i++;
+		}
+	}
+}
+
+static void	smart_rotate_b_to_top(t_stack *b)
+{
+	int	max_index;
+	int	top_down_cost;
+	int	bottom_up_cost;
+	int	i;
+
+	max_index = find_max(b);
+	top_down_cost = max_index;
+	bottom_up_cost = (a->bottom + 1) - max_index;
+	i = 0;
+	if (top_down_cost <= bottom_up_cost)
+	{
+		while (i < top_down_cost)
+		{
+			rb(b);
 			i++;
 		}
 	}	
@@ -106,5 +135,10 @@ void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size)
 			pb(a, b);	
 		}
 		current_chunk++;
+	}
+	while (b->bottom >= 0)
+	{
+		smart_rotate_b_to_top(b);
+		pa(a, b);
 	}
 }

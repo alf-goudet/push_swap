@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:10:57 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:20:14 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:28:07 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	sort_large_nbrs(t_stack *a, t_stack *b, int chk_n, int chk_size);
 void	quick_sort(int *array, int start, int end);
 void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size);
 void	prepare_stack_b(t_stack *b, int incoming_nbr);
+int		find_max(t_stack *b);
 
 #endif
