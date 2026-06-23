@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 14:17:00 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 12:03:10 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/23 16:18:40 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,50 +30,67 @@ static bool is_in_range(t_stack *a, int index_limit[2])
 	return (false);
 }
 
-static int	find_hold_first(t_stack *a, int index_limit[2])
+static int	find_hold(t_stack *a, int index_limit[2], char to_find)
 {
-	int const	min = 0;
-	int const	max = 1;
-	int			i;
+	int	i;
 
-	i = 0;
-	while (i <= a->bottom)
+	if (to_find == 'f')
 	{
-		if (a->numbers[i] >= index_limit[min]
-			&& a->numbers[i] <= index_limit[max])
+		i = 0;
+		while (i <= a->bottom)
 		{
-			return (i);
+			if (a->numbers[i] >= index_limit[0]
+				&& a->numbers[i] <= index_limit[1])
+				return (i);
+			i++;
 		}
-		i++;
+	}
+	else if (to_find == 's')
+	{
+		i = a->bottom;
+		while (i >= 0)
+		{
+			if (a->numbers[i] >= index_limit[0]
+				&& a->numbers[i] <= index_limit[1])
+				return (i);
+			i--;
+		}
 	}
 	return (-1);
 }
 
-static int	find_hold_second(t_stack *a, int index_limit[2])
+static void	smart_rotate_to_top(t_stack *a, int hold[2])
 {
-	int const	min = 0;
-	int const	max = 1;
-	int			i;
+	int	top_down_cost;
+	int	bottom_up_cost;
+	int	i;
 
-	i = a->bottom;
-	while (i >= 0)
+	top_down_cost = hold[0];
+	bottom_up_cost = (a->bottom + 1) - hold[1];
+	i = 0;
+	if (top_down_cost <= bottom_up_cost)
 	{
-		if (a->numbers[i] >= index_limit[min]
-			&& a->numbers[i] <= index_limit[max])
+		while (i < top_down_cost)
 		{
-			return (i);
+			ra(a);
+			i++;
 		}
-		i--;
+	}	
+	else
+	{
+		while (i < bottom_up_cost)
+		{
+			rra(a);
+			i++;
+		}
 	}
-	return (-1);
 }
 
 void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size)
 {
 	int	current_chunk;
 	int	index_limit[2];
-	int	hold_first;
-	int	hold_second;
+	int	hold[2];
 
 	current_chunk = 0;
 	while (current_chunk < chk_n)
@@ -83,9 +100,10 @@ void	sort_in_chunks(t_stack *a, t_stack *b, int chk_n, int const chunk_size)
 		while (is_in_range(a, index_limit))
 		{
 			// 1. Find hold_first and hold_second positions here
-			hold_first = find_hold_first(a, index_limit);
-			hold_second = find_hold_second(a, index_limit);
+			hold[0] = find_hold(a, index_limit, 'f');
+			hold[1] = find_hold(a, index_limit, 's');
 			// 2. Calculate costs and rotate the cheaper one to the top
+			smart_rotate_to_top(a, hold);
 			// 3. Position Stack B correctly and push (pb)	
 		}
 		current_chunk++;
