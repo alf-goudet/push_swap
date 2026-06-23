@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:10:57 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/01 22:02:42 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/22 15:03:06 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_stack
 int		has_duplicates(int *stack, int n);
 void	sort_numbers(t_stack *a, t_stack *b);
 
-
 // Operation functions
 void	sa(t_stack *a);
 void	sb(t_stack *b);
@@ -38,4 +37,15 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+
+// Sorting algorithm functions
+void	sort_3_numbers(t_stack *a, int const top);
+void	sort_5_numbers(t_stack *a, t_stack *b, int const top);
+void	sort_100_numbers(t_stack *a, t_stack *b, int const top);
+void	sort_500_numbers(t_stack *a, t_stack *b, int const top);
+
+// Other helper functions
+void	quick_sort(int *array, int start, int end);
+void	sort_chunks(int **chunks, int *idx_array, t_stack *a, t_stack *b);
+
 #endif

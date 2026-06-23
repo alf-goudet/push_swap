@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 13:28:39 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/05/27 13:53:16 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/08 21:39:12 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	has_duplicates(int *stack, int n)
 	i = 0;
 	while (i < n)
 	{
-		j = 0;
+		j = i + 1;
 		while (j < n)
 		{
-			if (stack[i] == stack[j] && i != j)
+			if (stack[i] == stack[j])
 			{
 				return (dups_found);
 			}

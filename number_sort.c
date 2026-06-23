@@ -6,14 +6,14 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 17:02:58 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/02 21:42:24 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/19 20:09:44 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_3_numbers(t_stack *a, int const top);
-
+// NOTE: The number of integers currently on stack (nbr_count) is calculated as
+// the index of a's bottom number (the last number in the array) plus 1.
 void	sort_numbers(t_stack *a, t_stack *b)
 {
 	int			top_is_greater;
@@ -26,16 +26,12 @@ void	sort_numbers(t_stack *a, t_stack *b)
 		return ;
 	else if (nbr_count == 2 && top_is_greater)
 		sa(a);
-	else if (nbr_count >= 3 && nbr_count < 5)
+	else if (nbr_count == 3)
 		sort_3_numbers(a, top);
-}
-
-static void	sort_3_numbers(t_stack *a, int const top)
-{
-	int	const	mid = 1;
-	int			top_mid_comp;
-	int			top_bot_comp;
-	int			mid_bot_comp;
-
-	top_mid_comp = ft_memcmp(a->numbers[top], a->numbers[mid], sizeof(int));
+	else if (nbr_count == 5)
+		sort_5_numbers(a, b, top);
+	else if (nbr_count >= 100)
+		sort_100_numbers(a, b, top);
+	else if (nbr_count >= 500)
+		sort_500_numbers(a, b, top);
 }

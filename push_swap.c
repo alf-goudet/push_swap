@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 20:12:31 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/01 22:03:21 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/09 21:44:14 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int	main(int argc, char *argv[])
 	exit(EXIT_SUCCESS);
 }
 
+// NOTE on initialise_stacks():
+// ---------------------------
+// For each stack, bottom index -1 means the stack is empty, because of
+// the zero-based index notation of C arrays.
 static void	initialise_stacks(t_stack *a, t_stack *b, int argc, char **argv)
 {
 	int	idx;

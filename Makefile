@@ -8,7 +8,7 @@ LIBFT = ft_printf/libft/libft.a
 LIBS = $(LIB) $(LIBFTPRINTF) $(LIBFT)
 
 SRCS = push_swap.c find_dups.c swap.c push.c rotate.c reverse_rotate.c \
-	   number_sort.c
+	   number_sort.c hard_coded_sorts.c large_sort.c quick_sort.c chunk_sort_algo.c
 
 OBJS = $(SRCS:.c=.o)
 
