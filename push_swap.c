@@ -6,13 +6,15 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 20:12:31 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 19:51:56 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/26 21:57:08 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	initialise_stacks(t_stack *a, t_stack *b, int argc, char **argv);
+
+static bool	arg_is_digits_only(char *nbr_arg);
 
 int	main(int argc, char *argv[])
 {
@@ -33,7 +35,7 @@ int	main(int argc, char *argv[])
 // the zero-based index notation of C arrays.
 static void	initialise_stacks(t_stack *a, t_stack *b, int argc, char **argv)
 {
-	int	idx;
+	int	i;
 	int	nbr;
 
 	a->numbers = (int *)ft_calloc(argc - 1, sizeof(int));
@@ -42,18 +44,34 @@ static void	initialise_stacks(t_stack *a, t_stack *b, int argc, char **argv)
 		handle_error(a, b);
 	a->bottom = -1;
 	b->bottom = -1;
-	idx = argc - 1;
-	while (idx > 0)
+	i = argc - 1;
+	while (i > 0)
 	{
-		nbr = ft_atoi(argv[idx]);
-		if (nbr == 0 && *argv[idx] != '0')
+		if (!arg_is_digits_only(argv[i]))
 			handle_error(a, b);
-		a->numbers[idx - 1] = nbr;
+		nbr = ft_atoi(argv[i]);
+		if (nbr == 0 && *argv[i] != '0')
+			handle_error(a, b);
+		a->numbers[i - 1] = nbr;
 		a->bottom++;
-		idx--;
+		i--;
 	}
 	if (has_duplicates(a->numbers, argc - 1))
 		handle_error(a, b);
+}
+
+static bool	arg_is_digits_only(char *nbr_arg)
+{
+	int	i;
+
+	i = 0;
+	while (nbr_arg[i] != '\0')
+	{
+		if (!ft_isdigit(nbr_arg[i]))
+			return (false);
+		i++;
+	}
+	return (true);
 }
 
 void	handle_error(t_stack *a, t_stack *b)
