@@ -25,5 +25,6 @@ clean:
 
 fclean: clean
 	$(MAKE) $@ $(LIBFT_PATH)
+	rm -f $(NAME)
 
 re: fclean all
