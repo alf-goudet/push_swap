@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:10:57 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 20:52:02 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/26 14:47:42 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf/ft_printf.h"	// to use my ft_printf
-# include "ft_printf/libft/libft.h"	// to use my libft functions
+# include "libft/libft.h"			// to use my libft functions
 # include <stdlib.h>				// for malloc, free, exit
 # include <stdbool.h> // for more explicit "true/false" condition values
 

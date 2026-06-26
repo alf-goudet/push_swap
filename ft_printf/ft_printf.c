@@ -73,7 +73,7 @@ static int	handle_format(va_list args, const char *format, size_t *idx)
 	char	spec;
 
 	(*idx)++;
-	if (format[*idx] == 'l')
+	if (format[*idx] == 'l' || format[*idx] == 'z')
 		bytes = handle_type_length(args, format, idx);
 	else
 	{

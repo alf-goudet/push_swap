@@ -2,7 +2,7 @@ NAME = push_swap
 
 LIB = libpushswap.a
 LIBFTPRINTF = ft_printf/libftprintf.a
-LIBFT = ft_printf/libft/libft.a
+LIBFT = libft/libft.a
 
 #All previous libraries grouped into one
 LIBS = $(LIB) $(LIBFTPRINTF) $(LIBFT)
