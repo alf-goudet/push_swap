@@ -6,7 +6,7 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 14:17:00 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 21:00:26 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/26 21:59:29 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	smart_rotate_a_to_top(t_stack *a, int hold[2])
 			ra(a);
 			i++;
 		}
-	}	
+	}
 	else
 	{
 		while (i < bottom_up_cost)
@@ -86,7 +86,7 @@ static void	smart_rotate_b_to_top(t_stack *b)
 			rb(b);
 			i++;
 		}
-	}	
+	}
 	else
 	{
 		while (i < bottom_up_cost)

@@ -6,15 +6,15 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 20:53:28 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/23 21:00:35 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/26 21:53:43 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool is_in_range(t_stack *a, int index_limit[2])
+bool	is_in_range(t_stack *a, int index_limit[2])
 {
-	int 		curr_index;
+	int			curr_index;
 	int const	min = 0;
 	int const	max = 1;
 
@@ -28,4 +28,3 @@ bool is_in_range(t_stack *a, int index_limit[2])
 	}
 	return (false);
 }
-

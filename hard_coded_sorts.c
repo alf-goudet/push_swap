@@ -6,17 +6,17 @@
 /*   By: agoudet- <agoudet-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 18:52:19 by agoudet-          #+#    #+#             */
-/*   Updated: 2026/06/18 18:23:06 by agoudet-         ###   ########.fr       */
+/*   Updated: 2026/06/26 22:00:56 by agoudet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Overview: Various sorting algorithms coded manually: Sort 3, 4 and 5 numbers
+// Overview: Various sorting algorithms coded manually: Sort 3 and 5 numbers
 
-static unsigned int	find_smallest(t_stack *a);
+static unsigned int	find_min(t_stack *a);
 
-static void	push_smallest_to_b(t_stack *a, t_stack *b, unsigned int small_i);
+static void			push_min_to_b(t_stack *a, t_stack *b, unsigned int small_i);
 
 // 	3-number push_swap sorting algorithm:
 // 	------------------------------------
@@ -60,34 +60,34 @@ void	sort_5_numbers(t_stack *a, t_stack *b, int const top)
 		&& nbr[1] < nbr[4] && nbr[2] < nbr[3] && nbr[2] < nbr[4]
 		&& nbr[3] < nbr[4])
 		return ;
-	small_i = find_smallest(a);
-	push_smallest_to_b(a, b, small_i);
-	small_i = find_smallest(a);
-	push_smallest_to_b(a, b, small_i);
+	small_i = find_min(a);
+	push_min_to_b(a, b, small_i);
+	small_i = find_min(a);
+	push_min_to_b(a, b, small_i);
 	sort_3_numbers(a, top);
 	pa(a, b);
 	pa(a, b);
 }
 
-static unsigned int	find_smallest(t_stack *a)
+static unsigned int	find_min(t_stack *a)
 {
-	int				smallest_idx;
+	int				min_idx;
 	unsigned int	idx;
 	unsigned int	len;
 
 	len = a->bottom + 1;
-	smallest_idx = 0;
+	min_idx = 0;
 	idx = 1;
 	while (idx < len)
 	{
-		if (a->numbers[idx] < a->numbers[smallest_idx])
-			smallest_idx = idx;
+		if (a->numbers[idx] < a->numbers[min_idx])
+			min_idx = idx;
 		idx++;
 	}
-	return (smallest_idx);
+	return (min_idx);
 }
 
-static void	push_smallest_to_b(t_stack *a, t_stack *b, unsigned int small_i)
+static void	push_min_to_b(t_stack *a, t_stack *b, unsigned int small_i)
 {
 	unsigned int	stack_size;
 
